@@ -48,13 +48,13 @@ Route::middleware(['auth', AdminAuth::class])->group(function () {
         return view('manajemenpesanan');
     })->name('manajemen.pesanan');
 
-    Route::get('/metode-pembayaran', function () {
-        return view('metodepembayaran');
-    })->name('metode.pembayaran');
+    // Route::get('/metode-pembayaran', function () {
+    //     return view('metodepembayaran');
+    // })->name('metode.pembayaran');
 
-    Route::get('/ekspedisi', function () {
-        return view('ekspedisi');
-    })->name('ekspedisi');
+    // Route::get('/ekspedisi', function () {
+    //     return view('ekspedisi');
+    // })->name('ekspedisi');
 
 });
 

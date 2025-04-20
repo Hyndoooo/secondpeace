@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('id_pembayaran');
             $table->foreignId('id_pesanan')->constrained('pesanan', 'id_pesanan')->onDelete('cascade');
             $table->string('metode_pembayaran');
-            $table->enum('status_pembayaran', ['belum_bayar', 'sudah_bayar']);
+            $table->enum('status_pembayaran', ['menunggu pembayaran', 'pembayaran diterima', 'sedang diproses', 'pesanan dibatalkan', 'pesanan dikirim']);
             $table->timestamps();
         });        
     }
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembayarans');
+        Schema::dropIfExists('pembayaran');
     }
 };

@@ -20,8 +20,6 @@ class UserSeeder extends Seeder
             'email' => 'viviwulanseptiani@gmail.com',
             'password' => Hash::make('admin123'),
             'role' => 'admin',
-            'alamat' => 'Jl. Admin No. 1',
-            'no_telepon' => '089664237779',
             'foto_profil' => null,
         ]);
 
@@ -32,8 +30,6 @@ class UserSeeder extends Seeder
             'email' => 'pelanggan@gmail.com',
             'password' => Hash::make('1'),
             'role' => 'pelanggan',
-            'alamat' => 'Jl. Pelanggan No. 2',
-            'no_telepon' => '089876543210',
             'foto_profil' => null,
         ]);
     }

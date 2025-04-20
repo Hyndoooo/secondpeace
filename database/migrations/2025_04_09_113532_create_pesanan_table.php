@@ -12,14 +12,18 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('pesanan', function (Blueprint $table) {
-            $table->id('id_pesanan');
-            $table->foreignId('id_user')->constrained('users')->onDelete('cascade');
+            $table->bigIncrements('id_pesanan');
+            $table->foreignId('id_user')->constrained('users', 'id')->onDelete('cascade');
+            $table->foreignId('id_produk')->constrained('produk', 'id_produk')->onDelete('cascade');
+            $table->foreignId('id_alamat')->constrained('alamat', 'id_alamat')->onDelete('cascade');
+            $table->string('transaction_id')->nullable();
+            $table->string('payment_type')->nullable();
+            $table->string('payment_status')->default('pending'); // pending, paid, failed, etc.
             $table->string('status_pesanan');
-            $table->dateTime('waktu_pesanan');
-            $table->integer('total_pembayaran');
-            $table->text('catatan')->nullable();
+            $table->string('nomor_resi')->nullable();
+            $table->string('ekspedisi')->nullable();
             $table->timestamps();
-        });        
+        });
     }
 
     /**

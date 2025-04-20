@@ -9,7 +9,9 @@ class Pembayaran extends Model
     protected $primaryKey = 'id_pembayaran';
 
     protected $fillable = [
-        'id_pesanan', 'metode_pembayaran', 'status_pembayaran'
+        'id_pesanan',
+        'metode_pembayaran',
+        'status_pembayaran',
     ];
 
     public function pesanan()

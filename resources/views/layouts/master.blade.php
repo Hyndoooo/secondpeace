@@ -107,12 +107,12 @@
                 <li>
                     <a href="{{ route('manajemen.pesanan') }}"><i class="fas fa-shopping-cart"></i> Manajemen Pesanan</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('metode.pembayaran') }}"><i class="fas fa-wallet"></i> Metode Pembayaran</a>
                 </li>
                 <li>
                     <a href="{{ route('ekspedisi') }}"><i class="fas fa-truck"></i> Ekspedisi</a>
-                </li>
+                </li> --}}
                 <li class="logout">
                     <a href="{{ route('login') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
                 </li>

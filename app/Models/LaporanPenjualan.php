@@ -9,9 +9,13 @@ class LaporanPenjualan extends Model
     protected $primaryKey = 'id_laporan';
 
     protected $fillable = [
-        'id_user', 'tanggal_laporan', 'periode_bulan',
-        'periode_tahun', 'total_transaksi', 'jumlah_pesanan',
-        'total_produk_terjual'
+        'id_user',
+        'tanggal_laporan',
+        'periode_bulan',
+        'periode_tahun',
+        'total_transaksi',
+        'jumlah_pesanan',
+        'total_produk_terjual',
     ];
 
     public function user()

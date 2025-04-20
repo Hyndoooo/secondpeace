@@ -16,7 +16,7 @@ class ProdukController extends Controller
         // Jika ada input pencarian
         if ($request->has('search')) {
             $search = $request->input('search');
-            $query->where('nama_produk', 'like', '%' . $search . '%');
+            $query->where('id_produk', 'like', '%' . $search . '%');
         }
 
         $produk = $query->get();
@@ -39,7 +39,7 @@ class ProdukController extends Controller
             'kualitas' => 'required|in:tinggi,sedang,rendah',
             'size' => 'required|in:S,M,L,XL',
             'stok' => 'required|integer|min:0',
-            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:2048',    
+            'gambar' => 'required|image|mimes:jpg,jpeg,png|max:10240',    
         ]);
 
         // Simpan gambar
@@ -78,7 +78,7 @@ class ProdukController extends Controller
             'kualitas' => 'required',
             'size' => 'required',
             'stok' => 'required|integer',
-            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'gambar' => 'nullable|image|mimes:jpg,jpeg,png|max:10240',
         ]);
 
         $produk = Produk::findOrFail($id);
