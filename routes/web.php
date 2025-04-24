@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanPenjualanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProdukController;
@@ -47,6 +48,12 @@ Route::middleware(['auth', AdminAuth::class])->group(function () {
     Route::get('/manajemen-pesanan', function () {
         return view('manajemenpesanan');
     })->name('manajemen.pesanan');
+
+    Route::get('/laporan-penjualan', function () {
+        return view('laporan-penjualan');
+    })->name('laporan-penjualan');
+
+    // Route::get('/laporan-penjualan', [LaporanPenjualanController::class, 'index'])->name('laporan-penjualan');
 
     // Route::get('/metode-pembayaran', function () {
     //     return view('metodepembayaran');

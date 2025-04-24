@@ -107,6 +107,9 @@
                 <li>
                     <a href="{{ route('manajemen.pesanan') }}"><i class="fas fa-shopping-cart"></i> Manajemen Pesanan</a>
                 </li>
+                <li>
+                    <a href="{{ route('laporan-penjualan') }}"><i class="fas fa-chart-bar"></i> Laporan Penjualan</a>
+                </li>                
                 {{-- <li>
                     <a href="{{ route('metode.pembayaran') }}"><i class="fas fa-wallet"></i> Metode Pembayaran</a>
                 </li>
