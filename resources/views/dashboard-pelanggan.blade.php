@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Dashboard Pelanggn')
+@section('title', 'Dashboard Pelanggan')
 
 @section('content')
 <header class="mb-4">

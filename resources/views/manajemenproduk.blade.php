@@ -31,7 +31,7 @@
         <table class="table table-bordered">
             <thead class="text-center">
                 <tr>
-                    <th>ID</th>
+                    <th>ID Produk</th>
                     <th>Gambar</th>
                     <th>Nama</th>
                     <th>Deskripsi</th>

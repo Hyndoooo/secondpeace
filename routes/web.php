@@ -1,8 +1,10 @@
 <?php
 
+use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\LaporanPenjualanController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MidtransController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Middleware\AdminAuth;
 use App\Http\Middleware\PelangganAuth;
@@ -34,10 +36,12 @@ Route::post('/login/pelanggan', [LoginController::class, 'loginPelanggan'])->nam
 // =======================
 Route::middleware(['auth', AdminAuth::class])->group(function () {
 
+    // dahboard
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
+    // manajemen produk
     Route::get('/manajemen-produk', [ProdukController::class, 'index'])->name('manajemen.produk');
     Route::get('/produk/edit/{id}', [ProdukController::class, 'edit'])->name('produk.edit');
     Route::put('/produk/update/{id}', [ProdukController::class, 'update'])->name('produk.update');
@@ -45,15 +49,18 @@ Route::middleware(['auth', AdminAuth::class])->group(function () {
     Route::get('/produk/tambah-produk', [ProdukController::class, 'create'])->name('produk.create');
     Route::post('/produk/store', [ProdukController::class, 'store'])->name('produk.store');
 
+    // manajemen pesanan
     Route::get('/manajemen-pesanan', function () {
         return view('manajemenpesanan');
     })->name('manajemen.pesanan');
 
-    Route::get('/laporan-penjualan', function () {
-        return view('laporan-penjualan');
-    })->name('laporan-penjualan');
+    // laporan penjualan
+    Route::get('/laporan-penjualan', [LaporanPenjualanController::class, 'index'])->name('laporan-penjualan');
+    Route::get('/laporan-penjualan/download', [LaporanPenjualanController::class, 'downloadPDF'])->name('laporan-penjualan.download');
 
-    // Route::get('/laporan-penjualan', [LaporanPenjualanController::class, 'index'])->name('laporan-penjualan');
+    // midtrans
+    Route::post('/midtrans/callback', [MidtransController::class, 'callbackHandler']);
+    Route::get('/snap-token/{id}', [MidtransController::class, 'getSnapToken']);
 
     // Route::get('/metode-pembayaran', function () {
     //     return view('metodepembayaran');
@@ -72,4 +79,8 @@ Route::middleware(['auth', PelangganAuth::class])->group(function () {
     Route::get('/dashboard/pelanggan', function () {
         return view('dashboard-pelanggan');
     })->name('dashboard.pelanggan');
+
+    // Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index');
+    // Route::post('/checkout/token', [CheckoutController::class, 'getSnapToken'])->name('checkout.token');
+    // Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success');
 });

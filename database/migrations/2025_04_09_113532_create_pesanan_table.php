@@ -16,10 +16,8 @@ return new class extends Migration
             $table->foreignId('id_user')->constrained('users', 'id')->onDelete('cascade');
             $table->foreignId('id_produk')->constrained('produk', 'id_produk')->onDelete('cascade');
             $table->foreignId('id_alamat')->constrained('alamat', 'id_alamat')->onDelete('cascade');
-            $table->string('transaction_id')->nullable();
-            $table->string('payment_type')->nullable();
-            $table->string('payment_status')->default('pending'); // pending, paid, failed, etc.
-            $table->string('status_pesanan');
+            $table->string('id_pembayaran')->nullable();
+            $table->enum('status_pesanan', ['Menunggu Pembayaran', 'Pembayaran Diterima', 'Sedang Diproses', 'Pesanan Dibatalkan', 'Pesanan Dikirim', 'Pesanan Diterima']);
             $table->string('nomor_resi')->nullable();
             $table->string('ekspedisi')->nullable();
             $table->timestamps();

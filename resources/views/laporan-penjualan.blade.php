@@ -1,51 +1,73 @@
-@extends('layouts.master') {{-- Sesuaikan dengan layout utama kamu --}}
+@extends('layouts.master')
 
-@section('title', 'Laporan Penjualan')
+@section('title, Laporan Penjualan')
 
 @section('content')
-<div class="container mt-4">
-    <h1 class="mb-4">Laporan Penjualan</h1>
+<header class="mb-4">
+    <link rel="stylesheet" href="{{ asset('css/laporan-penjualan.css') }}">
+    <script src="{{ asset('js/laporan-penjualan.js') }}"></script>
+</header>
 
-    <div class="mb-3">
-        <button onclick="window.print()" class="btn btn-primary">
-            <i class="fas fa-print"></i> Cetak Laporan
-        </button>
-    </div>
+<div class="container-laporan">
+    <h2 class="text-center">Laporan Penjualan</h2>
 
-    <table class="table table-bordered table-striped">
-        <thead class="table-dark">
+    <form method="GET" class="filter-form">
+        <div class="form-group">
+            <label for="start_date">Tanggal Mulai:</label>
+            <input type="date" name="start_date" id="start_date" value="{{ request('start_date') }}">
+        </div>
+        <div class="form-group">
+            <label for="end_date">Tanggal Selesai:</label>
+            <input type="date" name="end_date" id="end_date" value="{{ request('end_date') }}">
+        </div>
+        <div class="form-group btn-group">
+            <button type="submit">Tampilkan</button>
+            <a href="{{ route('laporan-penjualan') }}">
+                🔄 Reset
+            </a>
+        </div>
+        <a href="{{ route('laporan-penjualan.download', ['start_date' => request('start_date'), 'end_date' => request('end_date')]) }}" class="btn btn-primary">Download PDF</a>
+    </form>
+
+    <table class="laporan-table">
+        <thead>
             <tr>
-                <th>No</th>
+                <th>ID Pesanan</th>
                 <th>Tanggal</th>
+                <th>Nama Pelanggan</th>
                 <th>Nama Produk</th>
-                <th>Jumlah Terjual</th>
-                <th>Harga Satuan</th>
-                <th>Total</th>
+                <th>Jumlah</th>
+                <th>Total Harga</th>
+                <th>Status</th>
             </tr>
         </thead>
         <tbody>
-            {{-- Contoh data dummy, nanti bisa kamu looping dari controller --}}
-            <tr>
-                <td>1</td>
-                <td>2025-04-24</td>
-                <td>Produk A</td>
-                <td>5</td>
-                <td>Rp10.000</td>
-                <td>Rp50.000</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>2025-04-24</td>
-                <td>Produk B</td>
-                <td>2</td>
-                <td>Rp20.000</td>
-                <td>Rp40.000</td>
-            </tr>
+            @if(count($laporan) > 0)
+                @php $totalSemua = 0; @endphp
+                @foreach($laporan as $index => $item)
+                    @php $totalSemua += $item->total_harga; @endphp
+                    <tr>
+                        <td>{{ $index + 1 }}</td>
+                        <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d M Y') }}</td>
+                        <td>{{ $item->nama_pelanggan }}</td>
+                        <td>{{ $item->nama_produk }}</td>
+                        <td>{{ $item->jumlah }}</td>
+                        <td>Rp {{ number_format($item->total_harga, 0, ',', '.') }}</td>
+                        <td>{{ $item->status_pesanan }}</td>
+                    </tr>
+                @endforeach
+            @else
+                <tr>
+                    <td colspan="7" class="text-center">Tidak ada data penjualan pada rentang waktu ini.</td>
+                </tr>
+            @endif
         </tbody>
         <tfoot>
             <tr>
-                <th colspan="5" class="text-end">Total Keseluruhan:</th>
-                <th>Rp90.000</th>
+                <th colspan="5" class="text-right">Total Pendapatan</th>
+                <th colspan="2">
+                    Rp {{ count($laporan) > 0 ? number_format($totalSemua, 0, ',', '.') : '0' }}
+                </th>
             </tr>
         </tfoot>
     </table>

@@ -13,6 +13,7 @@ class Pesanan extends Model
         'id_user',
         'id_produk',
         'id_alamat',
+        'id_pembayaran',
         'status_pesanan',
         'nomor_resi',
         'ekspedisi',
