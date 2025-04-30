@@ -17,7 +17,7 @@
                 type="text" 
                 name="search" 
                 class="form-control w-25" 
-                placeholder="Cari berdasarkan ID Produk" 
+                placeholder="Cari ID Produk" 
                 value="{{ request('search') }}"
             >
             <button type="submit" class="btn btn-primary ms-2">Cari</button>

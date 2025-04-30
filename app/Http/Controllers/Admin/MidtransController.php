@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Alamat;
 use App\Models\DetailPesanan;
@@ -10,6 +10,7 @@ use Midtrans\Config;
 use App\Models\Pesanan;
 use GuzzleHttp\Psr7\Request;
 use Illuminate\Container\Attributes\Auth;
+use App\Http\Controllers\Controller;
 
 class MidtransController extends Controller
 {

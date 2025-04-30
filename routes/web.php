@@ -1,13 +1,17 @@
 <?php
 
-use App\Http\Controllers\CheckoutController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\LaporanPenjualanController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\MidtransController;
-use App\Http\Controllers\ProdukController;
+use Illuminate\Support\Facades\Route;
+
+// Admin Controller
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
+use App\Http\Controllers\Admin\LaporanPenjualanController;
+use App\Http\Controllers\Admin\ProdukController;
+use App\Http\Controllers\Admin\MidtransController;
 use App\Http\Middleware\AdminAuth;
+
+// Pelanggan Controller
+use App\Http\Controllers\Pelanggan\CheckoutController;
 use App\Http\Middleware\PelangganAuth;
 
 // Redirect ke login admin
@@ -37,12 +41,7 @@ Route::post('/login/pelanggan', [LoginController::class, 'loginPelanggan'])->nam
 // =======================
 Route::middleware(['auth', AdminAuth::class])->group(function () {
 
-    // dahboard
-    // Route::get('/admin/dashboard', function () {
-    //     return view('admin.dashboard');
-    // })->name('dashboard');
-
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])
+    Route::get('/admin/dashboard', [AdminDashboardController::class, 'index'])
     ->name('admin.dashboard');
 
     // manajemen produk

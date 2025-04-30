@@ -99,9 +99,9 @@
             <h2 class="sidebar-title">SECOND PEACE</h2>
             <ul class="sidebar-menu">
                 <li class="active">
-                    <a href="{{ route('admin.dashboard') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+                    <a href="{{ route('dashboard.pelanggan') }}"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="{{ route('manajemen.produk') }}"><i class="fas fa-box"></i> Manajemen Produk</a>
                 </li>
                 <li>
@@ -109,8 +109,8 @@
                 </li>
                 <li>
                     <a href="{{ route('laporan-penjualan') }}"><i class="fas fa-chart-bar"></i> Laporan Penjualan</a>
-                </li>                
-                {{-- <li>
+                </li>
+                <li>
                     <a href="{{ route('metode.pembayaran') }}"><i class="fas fa-wallet"></i> Metode Pembayaran</a>
                 </li>
                 <li>

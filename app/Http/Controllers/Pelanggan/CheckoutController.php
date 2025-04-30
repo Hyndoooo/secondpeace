@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Pelanggan;
 
 use Illuminate\Http\Request;
 use Midtrans\Snap;
@@ -12,6 +12,8 @@ use App\Models\Produk;
 use App\Models\Alamat;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
+
 
 class CheckoutController extends Controller
 {

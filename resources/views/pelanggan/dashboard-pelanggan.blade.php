@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master-user')
 
 @section('title', 'Dashboard Pelanggan')
 
@@ -10,7 +10,7 @@
 
 <div class="container">
     <div class="content-wrapper">
-        <h1>Welcome, Bang User!</h1>
+        <h1>Welcome, Bang, Selamat Berbelanja!</h1>
         <div class="card">
             <div class="card-title">Dashboard</div>
             <div class="stat-box">
